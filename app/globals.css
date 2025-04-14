@@ -1,0 +1,318 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  --kali-blue: #367bf0;
+  --kali-dark: #05080e;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+  overflow: hidden;
+  font-family: "DejaVu Sans Mono", monospace;
+}
+
+/* Custom scrollbar for the terminal feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a4332;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #367bf0;
+}
+
+/* Terminal text effect */
+.terminal-text {
+  font-family: "DejaVu Sans Mono", monospace;
+  color: #367bf0;
+  text-shadow: 0 0 5px rgba(54, 123, 240, 0.5);
+}
+
+/* Glitch effect */
+.glitch {
+  position: relative;
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch {
+  2%,
+  64% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(5deg);
+  }
+}
+
+.glitch:before,
+.glitch:after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.glitch:before {
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop {
+  2%,
+  64% {
+    transform: translate(2px, -2px);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  62% {
+    transform: translate(13px, -1px) skew(-13deg);
+  }
+}
+
+.glitch:after {
+  animation: glitchBottom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBottom {
+  2%,
+  64% {
+    transform: translate(-2px, 0);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 0);
+  }
+  62% {
+    transform: translate(-22px, 5px) skew(21deg);
+  }
+}
+
+/* Kali Linux inspired styles */
+.kali-window {
+  background-color: #121212;
+  border: 1px solid #367bf0;
+  box-shadow: 0 0 10px rgba(54, 123, 240, 0.5);
+}
+
+.kali-titlebar {
+  background: linear-gradient(to right, #1e3a8a, #367bf0);
+}
+
+.bg-grid-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23367BF0' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* Typing animation */
+.typing {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #367bf0;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #367bf0;
+  }
+}
+
+/* Add this to make sure the desktop takes up the full viewport */
+.kali-desktop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+/* Matrix-like animation for terminal */
+.matrix-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-animation::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(0deg, transparent 0%, rgba(54, 123, 240, 0.2) 50%, transparent 100%);
+  animation: matrix-scan 2s linear infinite;
+}
+
+@keyframes matrix-scan {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(50%);
+  }
+}
+
+/* Kali Linux button styles */
+.kali-button {
+  background-color: #367bf0;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-family: "DejaVu Sans Mono", monospace;
+  transition: background-color 0.2s;
+}
+
+.kali-button:hover {
+  background-color: #2563eb;
+}
+
+.kali-button:active {
+  background-color: #1d4ed8;
+}
+
+/* Kali Linux input styles */
+.kali-input {
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-family: "DejaVu Sans Mono", monospace;
+}
+
+.kali-input:focus {
+  outline: none;
+  border-color: #367bf0;
+  box-shadow: 0 0 0 2px rgba(54, 123, 240, 0.2);
+}
+
+/* Kali Linux notification animation */
+@keyframes notification-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(54, 123, 240, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(54, 123, 240, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(54, 123, 240, 0);
+  }
+}
+
+.notification-pulse {
+  animation: notification-pulse 2s infinite;
+}
+
+/* Kali Linux progress bar */
+.kali-progress {
+  height: 0.5rem;
+  background-color: #1f2937;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.kali-progress-bar {
+  height: 100%;
+  background-color: #367bf0;
+  border-radius: 0.25rem;
+  transition: width 0.3s ease;
+}
+
+/* Kali Linux tooltip */
+.kali-tooltip {
+  position: relative;
+}
+
+.kali-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.kali-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* AdSense compatibility */
+.ad-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #1f2937;
+  border-radius: 0.25rem;
+  margin: 1rem 0;
+}
+
+.ad-container-responsive {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.ad-container-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Developer credit */
+.developer-credit {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 50;
+  pointer-events: none;
+}
